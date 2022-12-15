@@ -38,9 +38,10 @@ function getMostPopularBooks(books) {
   return books.map((book)=>{return { name:book.title, count: book.borrows.length };}).sort((a,b)=>(a.count<b.count ? 1:-1)).slice(0,5);
 }
 
-//    { name: "Cristina Buchanan", count: 112 },
-
-
+function bookslength (book){
+return(book.borrows.length)
+}
+  
 function getMostPopularAuthors(books, authors) {
  let result = [];
  authors.forEach((author) => {
@@ -50,7 +51,7 @@ function getMostPopularAuthors(books, authors) {
   };
   books.forEach((book) => {
    if (book.authorId === author.id) {
-    auth.count += book.borrows.length;
+    auth.count += bookslength(book)//book.borrows.length;
    }
   });
   result.push(auth);
