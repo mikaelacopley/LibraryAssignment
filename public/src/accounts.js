@@ -15,8 +15,14 @@ return accounts;
 function getTotalNumberOfBorrows(account, books) {
   const acId = account.id;
   let total = 0
-  books.forEach(book =>book.borrows.forEach(borrow=>acId === borrow.id && total++));
-  return total;
+for (let i=0; i<books.length; i++){
+  let borrows= books[i].borrows
+  borrows.reduce((tot, book)=> {
+    if (acId===book.id){total++}
+  })
+
+  }
+  return total
 }
 
 function getBooksPossessedByAccount(account, books, authors) {
